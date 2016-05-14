@@ -1,6 +1,16 @@
 <?php
 
 
+if (! defined('HS')) 
+	die('Tidak boleh diakses langsung.');
+
+function myPre($value) 
+{
+    print '<pre>';
+    print_r ($value);
+    print '</pre>';
+}
+
 function apiRequest($method, $data)
 {
 	if (!is_string($method)) {
@@ -32,37 +42,35 @@ function apiRequest($method, $data)
     return $result;
 }
 
-function sendApiMsg($chatid, $msgid, $text, $parse_mode=false, $disablepreview = true)
+function getApiUpdate($offset) 
 {
-    
-	$method = 'sendMessage';
-    $data = array(
-        'chat_id' => $chatid,
-        'text'  => $text,
-        'parse_mode' => $parse_mode,
-        'reply_to_message_id' => $msgid ,
-        'disable_web_page_preview' => $disablepreview
+	$method = 'getUpdates';
+	$data['offset'] = $offset; 
 
-    );
+    $result = apiRequest($method, $data);
+
+    $result = json_decode($result, true);
+    if ($result["ok"]==1)
+        return $result["result"];
+    
+    return array();
+}
+
+function sendApiMsg($chatid, $text, $msg_reply_id=false, $parse_mode=false, $disablepreview = false)
+{
+	$method = 'sendMessage';
+    $data = [ 'chat_id' => $chatid, 'text'  => $text ];
+    
+    if ($msg_reply_id) 
+    	$data['reply_to_message_id'] = $msg_reply_id;
+    if ($parse_mode) 
+    	$data['parse_mode'] = $parse_mode;
+    if ($disablepreview)
+    	$data['disable_web_page_preview'] = $disablepreview ;
 
     $result = apiRequest($method, $data);
 }
 
-function sendApiMsg($chatid, $msgid, $text, $parse_mode=false, $disablepreview = true)
-{
-    
-	$method = 'sendMessage';
-    $data = array(
-        'chat_id' => $chatid,
-        'text'  => $text,
-        'parse_mode' => $parse_mode,
-        'reply_to_message_id' => $msgid ,
-        'disable_web_page_preview' => $disablepreview
-
-    );
-
-    $result = apiRequest($method, $data);
-}
 
 function sendApiAction($chatid, $action='typing')
 {
@@ -75,7 +83,42 @@ function sendApiAction($chatid, $action='typing')
     $result = apiRequest($method, $data);
 }
 
+function sendApiKeyboard($chatid, $text, $keyboard = Array(), $inline= false)
+{
+    $method = 'sendMessage';
+    $replyMarkup = [
+        'keyboard' => $keyboard,
+        'resize_keyboard'=>true
+    ];
 
-// sendApiMsg($idbanghasan, false, 'pesan *tebal*', 'Markdown', true);
+    $data = array(
+        'chat_id' => $chatid,
+        'text'  => $text,
+        'parse_mode' => 'Markdown',   
+
+    );
+
+    $inline  
+    ?	$data['reply_markup'] = json_encode(array("inline_keyboard" => $keyboard))
+    :	$data['reply_markup'] = json_encode( $replyMarkup ) ;
+
+    $result = apiRequest($method, $data);
+}
+
+function sendApiHideKeyboard($chatid, $text)
+{
+	$method = 'sendMessage';
+    $data = array(
+        'chat_id' => $chatid,
+        'text'  => $text,
+        'parse_mode' => 'Markdown',
+        'reply_markup'  =>  json_encode(array("hide_keyboard" => true))
+
+    );
+   
+	$result = apiRequest($method, $data);
+}
+
+
 
 ?>

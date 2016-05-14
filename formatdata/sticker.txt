@@ -1,0 +1,35 @@
+array (
+  'update_id' => 196240832,
+  'message' => array (
+
+      'message_id' => 893,
+      'from' => array (
+          'id' => 213567634,
+          'first_name' => 'BangHasan',
+          'username' => 'hasanudinhs',
+        ),
+
+      'chat' => array (
+        'id' => 213567634,
+        'first_name' => 'BangHasan',
+        'username' => 'hasanudinhs',
+        'type' => 'private',
+      ),
+
+    'date' => 1463129453,
+
+    'sticker' => array (
+      'width' => 464,
+      'height' => 512,
+      'emoji' => '😇',
+      'thumb' => array (
+        'file_id' => 'AAQFABNYG74yAASUUEAEYCagOVMyAAIC',
+        'file_size' => 6756,
+        'width' => 116,
+        'height' => 128,
+        ),
+      'file_id' => 'BQADBQADRAADRl4OCC8QJcku6zw9Ag',
+      'file_size' => 36292,
+    ),
+  ),
+)

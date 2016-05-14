@@ -1,0 +1,39 @@
+Array
+(
+    [update_id] => 782520529
+    [callback_query] => Array
+        (
+            [id] => 917266005003427154
+            [from] => Array
+                (
+                    [id] => 213567634
+                    [first_name] => BangHasan
+                    [username] => hasanudinhs
+                )
+
+            [message] => Array
+                (
+                    [message_id] => 599
+                    [from] => Array
+                        (
+                            [id] => 221497852
+                            [first_name] => first_name
+                            [username] => username
+                        )
+
+                    [chat] => Array
+                        (
+                            [id] => 213567634
+                            [first_name] => BangHasan
+                            [username] => hasanudinhs
+                            [type] => private
+                        )
+
+                    [date] => 1463226879
+                    [text] => tombol pilihan
+                )
+
+            [data] => data akhir
+        )
+
+)

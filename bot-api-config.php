@@ -1,8 +1,11 @@
 <?php
 
-$token = '216194169:AAGjn7XjKbnOjAP8Zic-vXNB2tWiZj-ITPg';
+if (! defined('HS')) 
+	die('Tidak boleh diakses langsung.');
+
+$token = 
 $debug = true;
 
-$idbanghasan = '213567634';
+$chatid = '213567634';
 
 ?>
