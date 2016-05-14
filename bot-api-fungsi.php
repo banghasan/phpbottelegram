@@ -30,9 +30,52 @@ function apiRequest($method, $data)
     $result = file_get_contents( $url, false, $context);
 
     return $result;
+}
 
+function sendApiMsg($chatid, $msgid, $text, $parse_mode=false, $disablepreview = true)
+{
+    
+	$method = 'sendMessage';
+    $data = array(
+        'chat_id' => $chatid,
+        'text'  => $text,
+        'parse_mode' => $parse_mode,
+        'reply_to_message_id' => $msgid ,
+        'disable_web_page_preview' => $disablepreview
+
+    );
+
+    $result = apiRequest($method, $data);
+}
+
+function sendApiMsg($chatid, $msgid, $text, $parse_mode=false, $disablepreview = true)
+{
+    
+	$method = 'sendMessage';
+    $data = array(
+        'chat_id' => $chatid,
+        'text'  => $text,
+        'parse_mode' => $parse_mode,
+        'reply_to_message_id' => $msgid ,
+        'disable_web_page_preview' => $disablepreview
+
+    );
+
+    $result = apiRequest($method, $data);
+}
+
+function sendApiAction($chatid, $action='typing')
+{
+	$method = 'sendChatAction';
+    $data = array(
+        'chat_id' => $chatid,
+        'action'  => $action
+
+    );
+    $result = apiRequest($method, $data);
 }
 
 
+// sendApiMsg($idbanghasan, false, 'pesan *tebal*', 'Markdown', true);
 
 ?>

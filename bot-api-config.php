@@ -1,7 +1,8 @@
 <?php
 
-$token = '';
+$token = '216194169:AAGjn7XjKbnOjAP8Zic-vXNB2tWiZj-ITPg';
 $debug = true;
 
+$idbanghasan = '213567634';
 
 ?>
