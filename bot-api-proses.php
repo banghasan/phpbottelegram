@@ -62,12 +62,12 @@ Kirim Inline Keyboard
 		]
 	];
 
-	sendApiKeyboard($idtujuan, 'tombol pilihan', $inkeyboard, true);
+	sendApiKeyboard($chatid, 'tombol pilihan', $inkeyboard, true);
 
 
 Menyembunyikan keyboard :
 ----------
-	sendApiHideKeyboard($idtujuan, 'keyboard off');
+	sendApiHideKeyboard($chatid, 'keyboard off');
 
 
 Dan Lain-lain :-D
@@ -80,7 +80,7 @@ function prosesApiMessage($sumber)
 {
     $updateid = $sumber["update_id"];
     
-    if ($GLOBALS['debug']) mypre($sumber);
+   // if ($GLOBALS['debug']) mypre($sumber);
 
     if (isset($sumber["message"])) {
     
@@ -98,7 +98,7 @@ function prosesApiMessage($sumber)
     }
 
     if (isset($sumber["callback_query"])) 
-    	prosesCallBackQuery( $sumber["callback_query"]['message'] ) ;
+    	prosesCallBackQuery( $sumber["callback_query"] ) ;
 
     return $updateid;
 }
@@ -110,7 +110,34 @@ function prosesPesanSticker($message)
 
 function prosesCallBackQuery($message)
 {
-	# code...
+	// if ($GLOBALS['debug']) mypre($message);
+
+	$message_id	=  	$message['message']['message_id'];
+	$chatid 	=	$message['message']['chat']['id'];
+	$data 		=	$message['data'];
+
+	$inkeyboard = [
+				[
+					['text'=>'Update 1', 'callback_data' => 'data update 1'], 
+					['text'=>'Update 2', 'callback_data' => 'data update 2']
+				],
+				[
+					['text'=>'keyboard on', 'callback_data' => '!keyboard'], 
+					['text'=>'keyboard inline', 'callback_data' => '!inline']
+				],
+				[
+					['text'=>'keyboard off', 'callback_data' => '!hide']
+				]
+			];
+
+	$text = "*" .date('H:i:s')."* data baru : ". $data;
+
+	editMessageText($chatid, $message_id, $text, $inkeyboard, true);
+
+	$messageupdate = $message['message'];
+	$messageupdate['text'] = $data;
+
+	prosesPesanTeks($messageupdate);
 }
 
 
@@ -126,9 +153,41 @@ function prosesPesanTeks($message)
 		
 		case ($pesan == '/id'):
 			sendApiAction($chatid);
-
 			$text = 'ID Kamu adalah: ' . $fromid;
 			sendApiMsg($chatid, $text);
+			break;
+
+		case ($pesan == '!keyboard'):
+			sendApiAction($chatid);
+			$keyboard = [
+				[ 'tombol 1', 'tombol 2' ],
+				[ '!keyboard', '!inline' ],
+				[ '!hide' ]
+			];	
+			sendApiKeyboard($chatid, 'tombol pilihan', $keyboard);
+			break;
+
+		case ($pesan == '!inline'):
+			sendApiAction($chatid);
+			$inkeyboard = [
+				[
+					['text'=>'Update 1', 'callback_data' => 'data update 1'], 
+					['text'=>'Update 2', 'callback_data' => 'data update 2']
+				],
+				[
+					['text'=>'keyboard on', 'callback_data' => '!keyboard'], 
+					['text'=>'keyboard inline', 'callback_data' => '!inline']
+				],
+				[
+					['text'=>'keyboard off', 'callback_data' => '!hide']
+				]
+			];
+			sendApiKeyboard($chatid, 'Tampilan Inline', $inkeyboard, true);
+			break;
+
+		case ($pesan == '!hide'):
+			sendApiAction($chatid);
+			sendApiHideKeyboard($chatid, 'keyboard off');
 			break;
 
 		case (preg_match("/\/echo (.*)/", $pesan)):

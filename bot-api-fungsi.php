@@ -105,6 +105,30 @@ function sendApiKeyboard($chatid, $text, $keyboard = Array(), $inline= false)
     $result = apiRequest($method, $data);
 }
 
+
+function editMessageText($chatid, $message_id, $text, $keyboard = Array(), $inline= false)
+{
+    $method = 'editMessageText';
+    $replyMarkup = [
+        'keyboard' => $keyboard,
+        'resize_keyboard'=>true
+    ];
+
+    $data = array(
+        'chat_id' => $chatid,
+        'message_id' => $message_id,
+        'text'  => $text,
+        'parse_mode' => 'Markdown',   
+
+    );
+
+    $inline  
+    ?	$data['reply_markup'] = json_encode(array("inline_keyboard" => $keyboard))
+    :	$data['reply_markup'] = json_encode( $replyMarkup ) ;
+
+    $result = apiRequest($method, $data);
+}
+
 function sendApiHideKeyboard($chatid, $text)
 {
 	$method = 'sendMessage';
