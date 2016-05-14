@@ -41,6 +41,10 @@ Untuk metode hook di set ke file `hook.php` :
 	menginformasikan id mu
 
 		/id
+	
+	menampilkan kembali pesan
+		
+		/echo pesan
 
 	sample markup keyboard
 
@@ -53,6 +57,12 @@ Untuk metode hook di set ke file `hook.php` :
 	menyembunyikan keyboard 
 
 		!hide
+
+### Support & Feedback
+
+Telegram : `@hasanudinhs`
+Grup     : `@myQers`
+
 
 ### Screenshot
 
