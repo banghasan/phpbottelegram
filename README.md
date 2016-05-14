@@ -26,11 +26,11 @@ Untuk metode hook di set ke file `hook.php` :
 
 2. edit file bot-api-config.php
 
-	ganti bagian $token = ''; sesuai token bot mu.
+	ganti bagian `$token = '';` sesuai token bot mu.
 	
 
-3. jalankan
-	
+3. Jalankan Bot Poll 
+	untuk menjalankan 
 	php bot.php
 
 4. perintah tersedia secara default :
