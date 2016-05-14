@@ -1,0 +1,7 @@
+<?php
+
+$token = '';
+$debug = true;
+
+
+?>
