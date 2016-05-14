@@ -143,6 +143,19 @@ function sendApiHideKeyboard($chatid, $text)
 	$result = apiRequest($method, $data);
 }
 
+function sendApiSticker($chatid, $sticker, $msg_reply_id = false )
+{
+	$method = 'sendSticker';
+    $data = array(
+        'chat_id' => $chatid,
+        'sticker'  => $sticker
+    );
 
+    if ($msg_reply_id) 
+    	$data['reply_to_message_id'] = $msg_reply_id;
+
+    $result = apiRequest($method, $data);
+
+}
 
 ?>

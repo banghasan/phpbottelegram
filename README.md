@@ -26,6 +26,9 @@ Untuk metode hook di set ke file `hook.php` :
 
 2. edit file bot-api-config.php
 
+	ganti bagian $token = ''; sesuai token bot mu.
+	
+
 3. jalankan
 	
 	php bot.php
@@ -33,14 +36,17 @@ Untuk metode hook di set ke file `hook.php` :
 4. perintah tersedia secara default :
 
 	/id 
+
 		menginformasikan id mu
 
 	!keyboard
+
 		sample markup keyboard
 
 	!inline
+
 		sample markup inline keyboard
 
 	!hide
+
 		menyembunyikan keyboard
-		

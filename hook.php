@@ -11,8 +11,9 @@ define('HS', true);
  *  Fungsi      : Sample bot API
  *  Pembuatan   : Mei 2016
  *
- *  File        : bot.php
- *  Tujuan      : bot poll untuk telegram
+ *  File        : hook.php
+ *  Tujuan      : bot hook untuk telegram
+ *	Syarat		: hosting harus HTTPS bersertifikat
  *  ____________________________________________________________
 */
 

@@ -65,9 +65,21 @@ Kirim Inline Keyboard
 	sendApiKeyboard($chatid, 'tombol pilihan', $inkeyboard, true);
 
 
+editMessageText
+----------
+	editMessageText($chatid, $message_id, $text, $inkeyboard, true);
+
+
+
 Menyembunyikan keyboard :
 ----------
 	sendApiHideKeyboard($chatid, 'keyboard off');
+
+
+kirim sticker
+----------
+
+	sendApiSticker($chatid, 'BQADAgADUAADxKtoC8wBeZm11cjsAg')
 
 
 Dan Lain-lain :-D
