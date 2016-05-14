@@ -4,14 +4,20 @@ Template bot telegram menggunakan php dengan konsep sederhana. Mudah dipelajari 
 
 Baik poll atau webhook yang diutak-atik hanya 1 file saja :
     
-    	`bot-api-proses.php`
+    	bot-api-proses.php
 
 Untuk metode hook di set ke file `hook.php` :
 	
-	`https://domain.mu/path/hook.php`
+	https://domain.mu/path/hook.php
+
+### Support
+
+1. Poll dan Webhook Method
+2. Markup Keyboard dan Inline
+3. Action Bot
 
 
-### Installasi dan penngunaan
+### Installasi dan penggunaan
 
 1. download atau clone ini
 
@@ -19,7 +25,7 @@ Untuk metode hook di set ke file `hook.php` :
 
 	ganti bagian
 	
-		`$token = '';` 
+		$token = ''; 
 	
 	sesuai token bot mu.
 	
@@ -28,25 +34,25 @@ Untuk metode hook di set ke file `hook.php` :
 
 	untuk menjalankan
 	
-		`php bot.php`
+		php bot.php
 
 4. perintah tersedia secara default :
 
 	menginformasikan id mu
 
-		`/id`
+		/id
 
 	sample markup keyboard
 
-		`!keyboard`
+		!keyboard
 
 	sample markup inline keyboard
 
-		`!inline`
+		!inline
 
 	menyembunyikan keyboard 
 
-		`!hide`
+		!hide
 
 ### Screenshot
 
