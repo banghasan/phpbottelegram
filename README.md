@@ -60,8 +60,8 @@ Untuk metode hook di set ke file `hook.php` :
 
 ### Support & Feedback
 
-Telegram : `@hasanudinhs`
-Grup     : `@myQers`
+Telegram     : `@hasanudinhs`
+Grup Diskusi : `@botphp`
 
 
 ### Screenshot
