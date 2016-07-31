@@ -29,7 +29,4 @@ $message = json_decode($entityBody, true);
 prosesApiMessage($message);
 
 
-// Telegram by: banghasan @hasanudinhs @myqers
-
-
-?>
+// Telegram by: banghasan @hasanudinhs @myqers;
