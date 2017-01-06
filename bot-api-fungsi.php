@@ -28,7 +28,6 @@ function apiRequest($method, $data)
         return false;
     }
 
-
     $url = 'https://api.telegram.org/bot'.$GLOBALS['token'].'/'.$method;
 
     $options = [
@@ -78,7 +77,6 @@ function sendApiMsg($chatid, $text, $msg_reply_id = false, $parse_mode = false, 
     $result = apiRequest($method, $data);
 }
 
-
 function sendApiAction($chatid, $action = 'typing')
 {
     $method = 'sendChatAction';
@@ -111,7 +109,6 @@ function sendApiKeyboard($chatid, $text, $keyboard = [], $inline = false)
 
     $result = apiRequest($method, $data);
 }
-
 
 function editMessageText($chatid, $message_id, $text, $keyboard = [], $inline = false)
 {

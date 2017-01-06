@@ -28,9 +28,6 @@ Jika ada pesan masuk pada console ditandai +
 
 */
 
-
-
-
 function myloop()
 {
     global $debug;
@@ -55,6 +52,5 @@ function myloop()
 while (true) {
     myloop();
 }
-
 
 // Telegram by: banghasan @hasanudinhs @myqers;

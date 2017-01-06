@@ -4,7 +4,6 @@ if (!defined('HS')) {
     die('Tidak boleh diakses langsung.');
 }
 
-
 /*
  *  Programmer	: Hasanudin HS
  *  Email     	: banghasan@gmail.com
@@ -18,8 +17,6 @@ if (!defined('HS')) {
  *  Tujuan		: semua proses bot ada di sini
  *  ____________________________________________________________
 */
-
-
 
 /*
 
@@ -88,7 +85,6 @@ Dan Lain-lain :-D
 
 */
 
-
 function prosesApiMessage($sumber)
 {
     $updateid = $sumber['update_id'];
@@ -150,7 +146,6 @@ function prosesCallBackQuery($message)
 
     prosesPesanTeks($messageupdate);
 }
-
 
 function prosesPesanTeks($message)
 {
