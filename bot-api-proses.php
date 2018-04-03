@@ -201,12 +201,10 @@ function prosesPesanTeks($message)
             sendApiHideKeyboard($chatid, 'keyboard off');
             break;
 
-        case preg_match("/\/echo (.*)/", $pesan):
+        case preg_match("/\/echo (.*)/", $pesan, $hasil):
             sendApiAction($chatid);
 
-            preg_match("/\/echo (.*)/", $pesan, $hasil);
-
-            $text = '*Echo:* '.$hasil[0];
+            $text = '*Echo:* '.$hasil[1];
             sendApiMsg($chatid, $text, false, 'Markdown');
             break;
 
