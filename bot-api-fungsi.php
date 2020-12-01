@@ -161,3 +161,16 @@ function sendApiSticker($chatid, $sticker, $msg_reply_id = false)
 
     $result = apiRequest($method, $data);
 }
+
+function answerCallbackQuery($queryid, $text='', $alert=false, $url='', $cache=''){
+    $method = 'answerCallbackQuery';
+    $data = [
+        'callback_query_id' => $queryid,
+        'text' => $text,
+        'show_alert' => $alert,
+        'cache_time' => $cache,       
+    ];
+    
+    $result = apiRequest($method, $data);
+    return $result;
+}
