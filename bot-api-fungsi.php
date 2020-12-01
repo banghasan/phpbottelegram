@@ -28,19 +28,16 @@ function apiRequest($method, $data)
         return false;
     }
 
-
     $url = 'https://api.telegram.org/bot'.$GLOBALS['token'].'/'.$method;
-
-    $options = [
-        'http' => [
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data),
-        ],
-    ];
-    $context = stream_context_create($options);
-
-    $result = file_get_contents($url, false, $context);
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type:multipart/form-data"]);
+    curl_setopt($ch, CURLOPT_POST, TRUE);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    
+    $result = curl_exec($ch);
 
     return $result;
 }
@@ -163,4 +160,17 @@ function sendApiSticker($chatid, $sticker, $msg_reply_id = false)
     }
 
     $result = apiRequest($method, $data);
+}
+
+function answerCallbackQuery($queryid, $text='', $alert=false, $url='', $cache=''){
+    $method = 'answerCallbackQuery';
+    $data = [
+        'callback_query_id' => $queryid,
+        'text' => $text,
+        'show_alert' => $alert,
+        'cache_time' => $cache,       
+    ];
+    
+    $result = apiRequest($method, $data);
+    return $result;
 }
