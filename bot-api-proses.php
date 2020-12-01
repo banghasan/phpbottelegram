@@ -126,6 +126,7 @@ function prosesCallBackQuery($message)
     $message_id = $message['message']['message_id'];
     $chatid = $message['message']['chat']['id'];
     $data = $message['data'];
+    $queryid = $message['id'];
 
     $inkeyboard = [
                 [
@@ -144,6 +145,7 @@ function prosesCallBackQuery($message)
     $text = '*'.date('H:i:s').'* data baru : '.$data;
 
     editMessageText($chatid, $message_id, $text, $inkeyboard, true);
+    answerCallbackQuery($queryid);
 
     $messageupdate = $message['message'];
     $messageupdate['text'] = $data;
